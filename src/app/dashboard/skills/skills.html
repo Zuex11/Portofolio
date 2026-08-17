@@ -1,0 +1,42 @@
+<section class="admin-panel">
+  <div class="admin-panel__header">
+    <div>
+      <span class="section__eyebrow">edit</span>
+      <h1 class="section__title">Skills</h1>
+    </div>
+  </div>
+  <div class="admin-block">
+    <p class="admin-block__title"> add skill</p>
+    <form class="form">
+      <div class="form__row">
+        <div class="form__group">
+          <label class="form__label" for="skill-name-input">Skill name</label>
+          <input class="form__input" type="text" id="skill-name-input">
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="skill-category-input">Category</label>
+          <input class="form__input" type="text" id="skill-category-input" placeholder="e.g. Frontend">
+        </div>
+      </div>
+      <div class="form__row">
+        <div class="form__group">
+          <label class="form__label" for="skill-level-input">Level label</label>
+          <input class="form__input" type="text" id="skill-level-input" placeholder="e.g. Advanced">
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="skill-percent-input">Level (0-100)</label>
+          <input class="form__input" type="number" id="skill-percent-input" min="0" max="100">
+        </div>
+      </div>
+      <div class="form__group">
+        <button type="submit" class="btn btn--primary">Add skill</button>
+        <p class="form__status"></p>
+      </div>
+    </form>
+  </div>
+  <div class="admin-block">
+    <p class="admin-block__title"># current skills</p>
+    <div class="admin-list"></div>
+    <div class="empty-state">No skills yet — add one above.</div>
+  </div>
+</section>

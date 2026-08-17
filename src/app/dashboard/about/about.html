@@ -1,0 +1,57 @@
+  <section class="admin-panel is-active" id="panel-about" data-panel="about">
+      <div class="admin-panel__header">
+        <div>
+          <span class="section__eyebrow">edit</span>
+          <h1 class="section__title">About</h1>
+        </div>
+      </div>
+      <div class="admin-block">
+        <p class="admin-block__title"># profile</p>
+        <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="about-name-input">Name</label>
+              <input class="form__input" type="text" id="about-name-input" name="name" formControlName="name" />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="about-role-input">Role / title</label>
+              <input class="form__input" type="text" id="about-role-input" name="title" formControlName="title" />
+            </div>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="about-photo-input">Profile Picture</label>
+            <input class="form__input" type="file" id="about-photo-input" name="photo" (change)="onFileChange($event)" />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="about-bio-input">Bio</label>
+            <textarea class="form__textarea" id="about-bio-input" name="bio" formControlName="bio"></textarea>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="about-email-input"
+                >Contact email (shown publicly)</label
+              >
+              <input class="form__input" type="email" id="about-email-input" name="email" formControlName="email" />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="about-github-input">GitHub URL</label>
+              <input class="form__input" type="url" id="about-github-input" name="github" formControlName="github" />
+            </div>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="about-linkedin-input">LinkedIn URL</label>
+            <input
+              class="form__input"
+              type="url"
+              id="about-linkedin-input"
+              name="linkedIn"
+              formControlName ="linkedIn"
+            />
+          </div>
+          <div class="form__group">
+            <button type="submit" class="btn btn--primary">Save changes</button>
+            <p class="form__status">{{ status }}</p>
+          </div>
+        </form>
+      </div>
+    </section>
