@@ -12,7 +12,6 @@ const educationRoute = require('./routes/educationRoute')
 const skillsRoute = require('./routes/skillsRoute')
 const projectsRoute = require('./routes/projectsRoute')
 const messageRoute = require('./routes/messagesRoute')
-app.use(express.static('public'))
 app.use('/about', aboutRoute);
 app.use('/education', educationRoute);
 app.use('/skills', skillsRoute);
