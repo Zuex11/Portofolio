@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AboutService } from '../../core/services/about-service';
+import { IAboutAPI } from '../../core/services/models/about.model';
 
 @Component({
   selector: 'app-about',
@@ -10,7 +11,8 @@ import { AboutService } from '../../core/services/about-service';
   styleUrl: './about.css',
 })
 export class About implements OnInit {
-  about = {
+  about :IAboutAPI = {
+    _id: '',
     name: 'Your Name',
     title: 'Your Role / Title',
     bio: 'Write a short bio here...',

@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AboutService } from '../../core/services/about-service';
 
@@ -10,7 +10,10 @@ import { AboutService } from '../../core/services/about-service';
   styleUrl: './about.css',
 })
 export class About implements OnInit {
-  constructor(private _aboutService: AboutService) {}
+  constructor(
+    private _aboutService: AboutService,
+    private _cdr: ChangeDetectorRef,
+  ) {}
   myForm!: FormGroup;
   status: string = '';
 
@@ -45,10 +48,12 @@ export class About implements OnInit {
       next: (data) => {
         this.status = 'Success!';
         console.log(data);
+        this._cdr.detectChanges();
       },
-      error: err => {
+      error: (err) => {
         this.status = 'Failed';
-        console.log(err)
+        console.log(err);
+        this._cdr.detectChanges();
       },
     });
   }

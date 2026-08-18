@@ -1,0 +1,10 @@
+<div class="admin-list-item">
+  <div class="admin-list-item__body">
+    <p class="admin-list-item__title">{{mySkill.name}}</p>
+    <p class="admin-list-item__meta"><span>Category: {{mySkill.category}}</span> · <span> Level: {{mySkill.level}}</span> . <span> Level number: {{mySkill.levelNum}}</span></p>
+  </div>
+  <div class="admin-list-item__actions">
+    <button class="btn btn--ghost btn--small" type="button" (click) = "edit()">Edit</button>
+    <button class="btn btn--danger btn--small" type="button" (click)="delete()">Delete</button>
+  </div>
+</div>

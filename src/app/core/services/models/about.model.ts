@@ -1,5 +1,5 @@
 export interface IAboutAPI{
-    _id : number;
+    _id : string;
     name: string;
     email: string;
     title: string;

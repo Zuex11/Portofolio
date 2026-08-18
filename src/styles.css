@@ -476,8 +476,7 @@ img { max-width: 100%; display: block; }
   padding: 40px 40px 80px;
   min-width: 0;
 }
-.admin-panel { display: none; }
-.admin-panel.is-active { display: block; }
+
 .admin-panel__header {
   display: flex;
   justify-content: space-between;
@@ -593,4 +592,14 @@ img { max-width: 100%; display: block; }
   color: var(--text-muted);
   border-top: 1px solid var(--border);
   font-size: 14px;
+}
+.edit-form-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
 }

@@ -6,37 +6,74 @@
     </div>
   </div>
   <div class="admin-block">
-    <p class="admin-block__title"> add skill</p>
-    <form class="form">
+    <p class="admin-block__title">add skill</p>
+    <form class="form" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
       <div class="form__row">
         <div class="form__group">
           <label class="form__label" for="skill-name-input">Skill name</label>
-          <input class="form__input" type="text" id="skill-name-input">
+          <input class="form__input" type="text" id="skill-name-input" ngModel name="name" />
         </div>
         <div class="form__group">
           <label class="form__label" for="skill-category-input">Category</label>
-          <input class="form__input" type="text" id="skill-category-input" placeholder="e.g. Frontend">
+          <input
+            class="form__input"
+            type="text"
+            id="skill-category-input"
+            placeholder="e.g. Frontend"
+            ngModel
+            name="category"
+          />
         </div>
       </div>
       <div class="form__row">
         <div class="form__group">
           <label class="form__label" for="skill-level-input">Level label</label>
-          <input class="form__input" type="text" id="skill-level-input" placeholder="e.g. Advanced">
+          <input
+            class="form__input"
+            type="text"
+            id="skill-level-input"
+            placeholder="e.g. Advanced"
+            ngModel
+            name="level"
+          />
         </div>
         <div class="form__group">
           <label class="form__label" for="skill-percent-input">Level (0-100)</label>
-          <input class="form__input" type="number" id="skill-percent-input" min="0" max="100">
+          <input
+            class="form__input"
+            type="number"
+            id="skill-percent-input"
+            min="0"
+            max="100"
+            ngModel
+            name="levelNum"
+          />
         </div>
       </div>
       <div class="form__group">
         <button type="submit" class="btn btn--primary">Add skill</button>
-        <p class="form__status"></p>
+        <p class="form__status">{{ status }}</p>
       </div>
     </form>
   </div>
   <div class="admin-block">
     <p class="admin-block__title"># current skills</p>
-    <div class="admin-list"></div>
-    <div class="empty-state">No skills yet — add one above.</div>
+    <div class="admin-list">
+      @for (skill of skills; track skill) {
+        <app-skillsdetails
+          [mySkill]="skill"
+          (doEdit)="onEdit($event)"
+          (doDelete)="onDelete($event)"
+        ></app-skillsdetails>
+      }
+      <div class="empty-state" *ngIf="skills.length === 0">No skills yet — add one above.</div>
+      <div class="edit-form-overlay" *ngIf="editingSkill">
+        <app-editform
+          [skill]="editingSkill!"
+          (editDone)="onCompleteEdit($event)"
+          (cancelled)="onCancelEdit()"
+        ></app-editform>
+      </div>
+    </div>
   </div>
 </section>
