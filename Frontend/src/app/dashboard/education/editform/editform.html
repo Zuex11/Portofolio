@@ -1,0 +1,28 @@
+<div class="admin-block">
+  <p class="admin-block__title"># edit entry</p>
+  <form class="form" (ngSubmit)="onEditSubmit(editForm)" #editForm="ngForm">
+    <div class="form__row">
+      <div class="form__group">
+        <label class="form__label" for="edit-education-title-input">Title</label>
+        <input class="form__input" type="text" id="edit-education-title-input" [ngModel]="education.title" name="title" />
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="edit-education-institution-input">Institution</label>
+        <input class="form__input" type="text" id="edit-education-institution-input" [ngModel]="education.institution" name="institution" />
+      </div>
+    </div>
+    <div class="form__group">
+      <label class="form__label" for="edit-education-period-input">Period</label>
+      <input class="form__input" type="text" id="edit-education-period-input" placeholder="e.g. 2023 — Present" [ngModel]="education.period" name="period" />
+    </div>
+    <div class="form__group">
+      <label class="form__label" for="edit-education-description-input">Description</label>
+      <textarea class="form__textarea" id="edit-education-description-input" [ngModel]="education.description" name="description"></textarea>
+    </div>
+    <div class="form__group">
+      <button type="submit" class="btn btn--primary">Save changes</button>
+      <p class="form__status">{{ editStatus }}</p>
+      <button type="button" class="btn btn--ghost btn--small" (click)="cancelled.emit()">Cancel</button>
+    </div>
+  </form>
+</div>

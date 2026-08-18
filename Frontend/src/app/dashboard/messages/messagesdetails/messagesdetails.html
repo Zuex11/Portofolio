@@ -1,0 +1,14 @@
+<div class="message-item" [class.message-item--read]="myMessage.isRead">
+  <div class="message-item__top">
+    <div>
+      <span class="message-item__from">{{ myMessage.name }}</span>
+      — <span class="message-item__from-email">{{ myMessage.email }}</span>
+    </div>
+  </div>
+  <p class="message-item__body">{{ myMessage.message }}</p>
+  <div class="message-item__actions">
+    <button class="btn btn--ghost btn--small" type="button" (click)="markRead()" *ngIf="!myMessage.isRead">Mark read</button>
+    <button class="btn btn--ghost btn--small" type="button" (click)="markUnread()" *ngIf="myMessage.isRead">Mark unread</button>
+    <button class="btn btn--danger btn--small" type="button" (click)="delete()">Delete</button>
+  </div>
+</div>

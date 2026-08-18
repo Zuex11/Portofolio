@@ -1,0 +1,20 @@
+<p class="path-label">~/<span>education</span></p>
+
+<section class="section" aria-labelledby="education-title">
+  <span class="section__eyebrow">background</span>
+  <h1 class="section__title" id="education-title">Education</h1>
+  <p class="section__subtitle">Degrees, courses, and certifications, newest first. Managed from the admin dashboard.</p>
+</section>
+
+<div class="timeline">
+  @for (edu of education; track edu._id) {
+    <article class="timeline-item">
+      <span class="timeline-item__period">{{ edu.period }}</span>
+      <h3 class="timeline-item__title">{{ edu.title }}</h3>
+      <p class="timeline-item__place">{{ edu.institution }}</p>
+      <p>{{ edu.description }}</p>
+    </article>
+  }
+</div>
+
+<div class="empty-state" *ngIf="education.length === 0">No education entries added yet.</div>

@@ -1,0 +1,10 @@
+<div class="admin-list-item">
+  <div class="admin-list-item__body">
+    <p class="admin-list-item__title">{{myProject.title}}</p>
+    <p class="admin-list-item__meta"><span>Tech: {{myProject.tech}}</span> · <span>Repo: {{myProject.repoUrl}}</span></p>
+  </div>
+  <div class="admin-list-item__actions">
+    <button class="btn btn--ghost btn--small" type="button" (click)="edit()">Edit</button>
+    <button class="btn btn--danger btn--small" type="button" (click)="delete()">Delete</button>
+  </div>
+</div>

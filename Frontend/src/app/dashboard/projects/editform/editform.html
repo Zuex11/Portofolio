@@ -1,0 +1,26 @@
+<div class="admin-block">
+  <p class="admin-block__title"># edit project</p>
+  <form class="form" (ngSubmit)="onEditSubmit(editForm)" #editForm="ngForm">
+    <div class="form__group">
+      <label class="form__label" for="edit-project-title-input">Title</label>
+      <input class="form__input" type="text" id="edit-project-title-input" [ngModel]="project.title" name="title" />
+    </div>
+    <div class="form__group">
+      <label class="form__label" for="edit-project-description-input">Description</label>
+      <textarea class="form__textarea" id="edit-project-description-input" [ngModel]="project.desc" name="desc"></textarea>
+    </div>
+    <div class="form__group">
+      <label class="form__label" for="edit-project-tech-input">Technologies</label>
+      <input class="form__input" type="text" id="edit-project-tech-input" placeholder="e.g. Node.js, Express, MongoDB" [ngModel]="project.tech" name="tech" />
+    </div>
+    <div class="form__group">
+      <label class="form__label" for="edit-project-repo-input">Repo URL</label>
+      <input class="form__input" type="url" id="edit-project-repo-input" [ngModel]="project.repoUrl" name="repoUrl" />
+    </div>
+    <div class="form__group">
+      <button type="submit" class="btn btn--primary">Save changes</button>
+      <p class="form__status">{{ editStatus }}</p>
+      <button type="button" class="btn btn--ghost btn--small" (click)="cancelled.emit()">Cancel</button>
+    </div>
+  </form>
+</div>

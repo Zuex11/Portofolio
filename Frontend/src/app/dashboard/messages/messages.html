@@ -1,0 +1,24 @@
+<div class="admin-panel__header">
+  <div>
+    <span class="section__eyebrow">inbox</span>
+    <h1 class="section__title">Messages</h1>
+  </div>
+  <button class="btn btn--ghost btn--small" type="button" (click)="toggleUnreadFilter()">
+    {{ showUnreadOnly ? 'Show all' : 'Show unread only' }}
+  </button>
+</div>
+
+<div class="admin-block">
+  <p class="admin-block__title"># contact form submissions</p>
+  <div class="admin-list">
+    @for (message of filteredMessages; track message._id) {
+      <app-messagesdetails
+        [myMessage]="message"
+        (doMarkRead)="onMarkRead($event)"
+        (doMarkUnread)="onMarkUnread($event)"
+        (doDelete)="onDelete($event)"
+      ></app-messagesdetails>
+    }
+  </div>
+  <div class="empty-state" *ngIf="filteredMessages.length === 0">No messages yet.</div>
+</div>

@@ -1,0 +1,23 @@
+<p class="path-label">~/<span>projects</span></p>
+
+<section class="section" aria-labelledby="projects-title">
+  <span class="section__eyebrow">selected work</span>
+  <h1 class="section__title" id="projects-title">Projects</h1>
+</section>
+
+<div class="card-grid">
+  @for (project of projects; track project._id) {
+    <article class="card card--project">
+      <h3 class="card__title">{{ project.title }}</h3>
+      <p>{{ project.desc }}</p>
+      <div class="tag-row">
+        <span class="tag">{{ project.tech }}</span>
+      </div>
+      <div class="card__links">
+        <a [href]="project.repoUrl" target="_blank" rel="noopener">Code →</a>
+      </div>
+    </article>
+  }
+</div>
+
+<div class="empty-state" *ngIf="projects.length === 0">No projects added yet.</div>

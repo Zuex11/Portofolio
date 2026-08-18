@@ -1,0 +1,38 @@
+<main class="page-content">
+  <p class="path-label">~/<span>about</span></p>
+
+  <section class="hero">
+    <img
+      class="hero__avatar"
+      [src]="'http://localhost:3000/files/' + about.photo"
+      alt="Profile photo"
+    />
+    <div>
+      <h1 class="hero__name">{{ about.name }}</h1>
+      <span class="hero__role">{{ about.title }}</span>
+      <p class="hero__bio">
+        {{ about.bio }}
+      </p>
+    </div>
+  </section>
+  <section class="section" aria-labelledby="contact-title">
+    <span class="section__eyebrow">get in touch</span>
+    <h2 class="section__title" id="contact-title">Contact me</h2>
+    <p class="section__subtitle">
+      Have a question or want to work together? Send a message below, or reach out directly.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="form__label">Email</p>
+        <a class="contact-info__email" [href]="'mailto:' + about.email">{{ about.email }}</a>
+        <ul class="contact-info__list">
+          <li><a [href]="about.github">GitHub</a></li>
+          <li><a [href]="about.linkedIn">LinkedIn</a></li>
+        </ul>
+      </div>
+              <app-message></app-message>
+
+    </div>
+  </section>
+</main>

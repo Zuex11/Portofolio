@@ -1,0 +1,73 @@
+<section class="admin-panel">
+  <div class="admin-panel__header">
+    <div>
+      <span class="section__eyebrow">edit</span>
+      <h1 class="section__title">Education</h1>
+    </div>
+  </div>
+
+  <div class="admin-block">
+    <p class="admin-block__title"># add entry</p>
+    <form class="form" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+      <div class="form__row">
+        <div class="form__group">
+          <label class="form__label" for="education-title-input">Title</label>
+          <input class="form__input" type="text" id="education-title-input" ngModel name="title" />
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="education-institution-input">Institution</label>
+          <input
+            class="form__input"
+            type="text"
+            id="education-institution-input"
+            ngModel
+            name="institution"
+          />
+        </div>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="education-period-input">Period</label>
+        <input
+          class="form__input"
+          type="text"
+          id="education-period-input"
+          placeholder="e.g. 2023 — Present"
+          ngModel
+          name="period"
+        />
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="education-description-input">Description</label>
+        <textarea
+          class="form__textarea"
+          id="education-description-input"
+          ngModel
+          name="description"
+        ></textarea>
+      </div>
+      <div class="form__group">
+        <button type="submit" class="btn btn--primary">Add entry</button>
+        <p class="form__status">{{ status }}</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="admin-block">
+    <p class="admin-block__title"># current entries</p>
+    <div class="admin-list"></div>
+    @for (edu of education; track edu) {
+      <app-educationdetails
+        [myEducation]="edu"
+        (doEdit)="onEdit($event)"
+        (doDelete)="onDelete($event)"
+      ></app-educationdetails>
+    }
+     <div class="empty-state" *ngIf="education.length === 0">No education yet — add one above.</div>
+      <div class="edit-form-overlay" *ngIf="editingEducation">
+        <app-editform
+          [education]="editingEducation!"
+          (editDone)="onCompleteEdit($event)"
+          (cancelled)="onCancelEdit()"
+        ></app-editform>
+  </div> </div>
+</section>

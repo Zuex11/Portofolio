@@ -1,0 +1,55 @@
+<section class="admin-panel">
+  <div class="admin-panel__header">
+    <div>
+      <span class="section__eyebrow">edit</span>
+      <h1 class="section__title">Projects</h1>
+    </div>
+  </div>
+
+  <div class="admin-block">
+    <p class="admin-block__title"># add project</p>
+    <form class="form" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+      <div class="form__group">
+        <label class="form__label" for="project-title-input">Title</label>
+        <input class="form__input" type="text" id="project-title-input" ngModel name="title">
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="project-description-input">Description</label>
+        <textarea class="form__textarea" id="project-description-input" ngModel name="desc"></textarea>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="project-tech-input">Technologies</label>
+        <input class="form__input" type="text" id="project-tech-input" placeholder="e.g. Node.js, Express, MongoDB" ngModel name="tech">
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="project-repo-input">Repo URL</label>
+        <input class="form__input" type="url" id="project-repo-input" ngModel name="repoUrl">
+      </div>
+      <div class="form__group">
+        <button type="submit" class="btn btn--primary">Add project</button>
+        <p class="form__status">{{ status }}</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="admin-block">
+    <p class="admin-block__title"># current projects</p>
+    <div class="admin-list">
+      @for (project of projects; track project._id) {
+        <app-projectdetails
+          [myProject]="project"
+          (doEdit)="onEdit($event)"
+          (doDelete)="onDelete($event)"
+        ></app-projectdetails>
+      }
+      <div class="empty-state" *ngIf="projects.length === 0">No projects yet — add one above.</div>
+      <div class="edit-form-overlay" *ngIf="editingProject">
+        <app-editform
+          [project]="editingProject!"
+          (editDone)="onCompleteEdit($event)"
+          (cancelled)="onCancelEdit()"
+        ></app-editform>
+      </div>
+    </div>
+  </div>
+</section>
