@@ -8,6 +8,7 @@ const educationSchema = new mongoose.Schema({
     },
     institution: {
         type: String,
+        required:true
     },
     period: {
         type: String,
@@ -15,6 +16,7 @@ const educationSchema = new mongoose.Schema({
     },
     description: {
         type: String,
+        required:true
     }
 
 })

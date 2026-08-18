@@ -11,19 +11,27 @@
     <form class="form" (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
       <div class="form__group">
         <label class="form__label" for="project-title-input">Title</label>
-        <input class="form__input" type="text" id="project-title-input" ngModel name="title">
+        <input class="form__input" type="text" id="project-title-input" required ngModel name="title" #title ="ngModel">
+              <p class="msg" *ngIf="title.invalid && title.touched">Title is required</p>
+
       </div>
       <div class="form__group">
         <label class="form__label" for="project-description-input">Description</label>
-        <textarea class="form__textarea" id="project-description-input" ngModel name="desc"></textarea>
+        <textarea class="form__textarea" required id="project-description-input" ngModel name="desc" #desc = "ngModel"></textarea>
+              <p class="msg" *ngIf="desc.invalid && desc.touched">Description is required</p>
+
       </div>
       <div class="form__group">
         <label class="form__label" for="project-tech-input">Technologies</label>
-        <input class="form__input" type="text" id="project-tech-input" placeholder="e.g. Node.js, Express, MongoDB" ngModel name="tech">
+        <input class="form__input" type="text" id="project-tech-input" placeholder="e.g. Node.js, Express, MongoDB" ngModel name="tech" #tech = "ngModel" required>
+              <p class="msg" *ngIf="tech.invalid && tech.touched">Technologies are required</p>
+
       </div>
       <div class="form__group">
         <label class="form__label" for="project-repo-input">Repo URL</label>
-        <input class="form__input" type="url" id="project-repo-input" ngModel name="repoUrl">
+        <input class="form__input" type="url" id="project-repo-input" ngModel name="repoUrl" required #repoURL = "ngModel">
+             <p class="msg" *ngIf="repoURL.invalid && repoURL.touched">Repo Url is required</p>
+
       </div>
       <div class="form__group">
         <button type="submit" class="btn btn--primary">Add project</button>

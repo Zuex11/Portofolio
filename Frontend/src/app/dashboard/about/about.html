@@ -1,57 +1,118 @@
-  <section class="admin-panel is-active" id="panel-about" data-panel="about">
-      <div class="admin-panel__header">
-        <div>
-          <span class="section__eyebrow">edit</span>
-          <h1 class="section__title">About</h1>
+<section class="admin-panel is-active" id="panel-about" data-panel="about">
+  <div class="admin-panel__header">
+    <div>
+      <span class="section__eyebrow">edit</span>
+      <h1 class="section__title">About</h1>
+    </div>
+  </div>
+  <div class="admin-block">
+    <p class="admin-block__title"># profile</p>
+    <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
+      <div class="form__row">
+        <div class="form__group">
+          <label class="form__label" for="about-name-input">Name</label>
+          <input
+            class="form__input"
+            type="text"
+            id="about-name-input"
+            name="name"
+            formControlName="name"
+          />
+          <div
+            class="msg"
+            *ngIf="myForm.get('name')?.touched && myForm.get('name')?.invalid">
+            <p *ngIf="myForm.get('name')?.errors?.['required']">Name is required</p>
+          </div>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="about-role-input">Role / title</label>
+          <input
+            class="form__input"
+            type="text"
+            id="about-role-input"
+            name="title"
+            formControlName="title"
+          />
+           <div
+            class="msg"
+            *ngIf="myForm.get('title')?.touched && myForm.get('title')?.invalid">
+            <p *ngIf="myForm.get('title')?.errors?.['required']">Title is required</p>
+          </div>
         </div>
       </div>
-      <div class="admin-block">
-        <p class="admin-block__title"># profile</p>
-        <form (ngSubmit)="onSubmit()" [formGroup]="myForm">
-          <div class="form__row">
-            <div class="form__group">
-              <label class="form__label" for="about-name-input">Name</label>
-              <input class="form__input" type="text" id="about-name-input" name="name" formControlName="name" />
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="about-role-input">Role / title</label>
-              <input class="form__input" type="text" id="about-role-input" name="title" formControlName="title" />
-            </div>
-          </div>
-          <div class="form__group">
-            <label class="form__label" for="about-photo-input">Profile Picture</label>
-            <input class="form__input" type="file" id="about-photo-input" name="photo" (change)="onFileChange($event)" />
-          </div>
-          <div class="form__group">
-            <label class="form__label" for="about-bio-input">Bio</label>
-            <textarea class="form__textarea" id="about-bio-input" name="bio" formControlName="bio"></textarea>
-          </div>
-          <div class="form__row">
-            <div class="form__group">
-              <label class="form__label" for="about-email-input"
-                >Contact email (shown publicly)</label
-              >
-              <input class="form__input" type="email" id="about-email-input" name="email" formControlName="email" />
-            </div>
-            <div class="form__group">
-              <label class="form__label" for="about-github-input">GitHub URL</label>
-              <input class="form__input" type="url" id="about-github-input" name="github" formControlName="github" />
-            </div>
-          </div>
-          <div class="form__group">
-            <label class="form__label" for="about-linkedin-input">LinkedIn URL</label>
-            <input
-              class="form__input"
-              type="url"
-              id="about-linkedin-input"
-              name="linkedIn"
-              formControlName ="linkedIn"
-            />
-          </div>
-          <div class="form__group">
-            <button type="submit" class="btn btn--primary">Save changes</button>
-            <p class="form__status">{{ status }}</p>
-          </div>
-        </form>
+      <div class="form__group">
+        <label class="form__label" for="about-photo-input">Profile Picture</label>
+        <input
+          class="form__input"
+          type="file"
+          id="about-photo-input"
+          name="photo"
+          (change)="onFileChange($event)"
+        />
       </div>
-    </section>
+      <div class="form__group">
+        <label class="form__label" for="about-bio-input">Bio</label>
+        <textarea
+          class="form__textarea"
+          id="about-bio-input"
+          name="bio"
+          formControlName="bio"
+        ></textarea>
+         <div
+            class="msg"
+            *ngIf="myForm.get('bio')?.touched && myForm.get('bio')?.invalid">
+            <p *ngIf="myForm.get('bio')?.errors?.['required']">Bio is required</p>
+          </div>
+      </div>
+      <div class="form__row">
+        <div class="form__group">
+          <label class="form__label" for="about-email-input">Contact email (shown publicly)</label>
+          <input
+            class="form__input"
+            type="email"
+            id="about-email-input"
+            name="email"
+            formControlName="email"
+          />
+            <div class="msg" *ngIf ="myForm.get('email')?.touched&&myForm.get('email')?.invalid"><p *ngIf = "myForm.get('email')?.errors?.['required']">Email is required</p>
+        <p *ngIf = "myForm.get('email')?.errors?.['email']">Wrong Email Format</p>
+        </div>
+        </div>
+        <div class="form__group">
+          <label class="form__label" for="about-github-input">GitHub URL</label>
+          <input
+            class="form__input"
+            type="url"
+            id="about-github-input"
+            name="github"
+            formControlName="github"
+          />
+                   <div
+            class="msg"
+            *ngIf="myForm.get('github')?.touched && myForm.get('github')?.invalid">
+            <p *ngIf="myForm.get('github')?.errors?.['required']">Github link is required</p>
+          </div>
+        </div>
+      </div>
+      <div class="form__group">
+        <label class="form__label" for="about-linkedin-input">LinkedIn URL</label>
+        <input
+          class="form__input"
+          type="url"
+          id="about-linkedin-input"
+          name="linkedIn"
+          formControlName="linkedIn"
+        />
+           <div
+            class="msg"
+            *ngIf="myForm.get('linekdIn')?.touched && myForm.get('linkedIn')?.invalid">
+            <p *ngIf="myForm.get('linkedIn')?.errors?.['required']">Linkedin link is required</p>
+          </div>
+      </div>
+      <div class="form__group">
+        <button type="submit" class="btn btn--primary">Save changes</button>
+        <p class="form__status">{{ status }}</p>
+      </div>
+    </form>
+  </div>
+</section>

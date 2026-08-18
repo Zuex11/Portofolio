@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angu
 import { ProjectsService } from '../../../core/services/projects-service';
 import { IProjectsAPI } from '../../../core/services/models/projects.model';
 import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editform',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './editform.html',
   styleUrl: './editform.css',
 })

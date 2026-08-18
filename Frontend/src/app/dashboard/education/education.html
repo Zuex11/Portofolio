@@ -12,7 +12,16 @@
       <div class="form__row">
         <div class="form__group">
           <label class="form__label" for="education-title-input">Title</label>
-          <input class="form__input" type="text" id="education-title-input" ngModel name="title" />
+          <input
+            class="form__input"
+            type="text"
+            id="education-title-input"
+            ngModel
+            required
+            #title="ngModel"
+            name="title"
+          />
+          <p class="msg" *ngIf="title.invalid && title.touched">Title is required</p>
         </div>
         <div class="form__group">
           <label class="form__label" for="education-institution-input">Institution</label>
@@ -21,8 +30,11 @@
             type="text"
             id="education-institution-input"
             ngModel
+            required
+            #institution="ngModel"
             name="institution"
           />
+          <p class="msg" *ngIf="institution.invalid && institution.touched">Institution is required</p>
         </div>
       </div>
       <div class="form__group">
@@ -33,8 +45,12 @@
           id="education-period-input"
           placeholder="e.g. 2023 — Present"
           ngModel
+          #period ="ngModel"
+          required
           name="period"
         />
+                <p class="msg" *ngIf="period.invalid && period.touched">Period is required</p>
+
       </div>
       <div class="form__group">
         <label class="form__label" for="education-description-input">Description</label>
@@ -42,8 +58,12 @@
           class="form__textarea"
           id="education-description-input"
           ngModel
+          #description = "ngModel"
+          required
           name="description"
         ></textarea>
+                <p class="msg" *ngIf="description.invalid && description.touched">Description is required</p>
+
       </div>
       <div class="form__group">
         <button type="submit" class="btn btn--primary">Add entry</button>
@@ -62,12 +82,13 @@
         (doDelete)="onDelete($event)"
       ></app-educationdetails>
     }
-     <div class="empty-state" *ngIf="education.length === 0">No education yet — add one above.</div>
-      <div class="edit-form-overlay" *ngIf="editingEducation">
-        <app-editform
-          [education]="editingEducation!"
-          (editDone)="onCompleteEdit($event)"
-          (cancelled)="onCancelEdit()"
-        ></app-editform>
-  </div> </div>
+    <div class="empty-state" *ngIf="education.length === 0">No education yet — add one above.</div>
+    <div class="edit-form-overlay" *ngIf="editingEducation">
+      <app-editform
+        [education]="editingEducation!"
+        (editDone)="onCompleteEdit($event)"
+        (cancelled)="onCancelEdit()"
+      ></app-editform>
+    </div>
+  </div>
 </section>

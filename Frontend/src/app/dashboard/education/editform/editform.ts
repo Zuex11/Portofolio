@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angu
 import { IEducationAPI } from '../../../core/services/models/education.model';
 import { EducationService } from '../../../core/services/education-service';
 import { FormsModule, NgForm } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editform',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './editform.html',
   styleUrl: './editform.css',
 })

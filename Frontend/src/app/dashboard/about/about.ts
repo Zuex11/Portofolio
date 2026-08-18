@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AboutService } from '../../core/services/about-service';
 
 @Component({
@@ -19,12 +19,12 @@ export class About implements OnInit {
 
   ngOnInit(): void {
     this.myForm = new FormGroup({
-      name: new FormControl(''),
-      title: new FormControl(''),
-      email: new FormControl(''),
-      bio: new FormControl(''),
-      github: new FormControl(''),
-      linkedIn: new FormControl(''),
+      name: new FormControl('', [Validators.required]),
+      title: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required,Validators.email]),
+      bio: new FormControl('', [Validators.required]),
+      github: new FormControl('',[Validators.required]),
+      linkedIn: new FormControl('', [Validators.required]),
       photo: new FormControl<File | null>(null),
     });
     this._aboutService.getInfo().subscribe((data) => {

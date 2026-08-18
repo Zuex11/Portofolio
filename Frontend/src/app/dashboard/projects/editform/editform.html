@@ -3,19 +3,27 @@
   <form class="form" (ngSubmit)="onEditSubmit(editForm)" #editForm="ngForm">
     <div class="form__group">
       <label class="form__label" for="edit-project-title-input">Title</label>
-      <input class="form__input" type="text" id="edit-project-title-input" [ngModel]="project.title" name="title" />
+      <input class="form__input" type="text" id="edit-project-title-input" [ngModel]="project.title" name="title" #title = "ngModel" required />
+              <p class="msg" *ngIf="title.invalid && title.touched">Title is required</p>
+
     </div>
     <div class="form__group">
       <label class="form__label" for="edit-project-description-input">Description</label>
-      <textarea class="form__textarea" id="edit-project-description-input" [ngModel]="project.desc" name="desc"></textarea>
+      <textarea class="form__textarea" id="edit-project-description-input" [ngModel]="project.desc" name="desc" required #desc = "ngModel"></textarea>
+              <p class="msg" *ngIf="desc.invalid && desc.touched">Description is required</p>
+
     </div>
     <div class="form__group">
       <label class="form__label" for="edit-project-tech-input">Technologies</label>
-      <input class="form__input" type="text" id="edit-project-tech-input" placeholder="e.g. Node.js, Express, MongoDB" [ngModel]="project.tech" name="tech" />
+      <input class="form__input" type="text" id="edit-project-tech-input" placeholder="e.g. Node.js, Express, MongoDB" [ngModel]="project.tech" name="tech" required #tech = "ngModel"/>
+              <p class="msg" *ngIf="tech.invalid && tech.touched">Technologies are required</p>
+
     </div>
     <div class="form__group">
       <label class="form__label" for="edit-project-repo-input">Repo URL</label>
-      <input class="form__input" type="url" id="edit-project-repo-input" [ngModel]="project.repoUrl" name="repoUrl" />
+      <input class="form__input" type="url" id="edit-project-repo-input" [ngModel]="project.repoUrl" name="repoUrl" #repoURL = "ngModel" required />
+              <p class="msg" *ngIf="repoURL.invalid && repoURL.touched">Repo URL is required</p>
+
     </div>
     <div class="form__group">
       <button type="submit" class="btn btn--primary">Save changes</button>

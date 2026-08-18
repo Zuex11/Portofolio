@@ -2,10 +2,11 @@ import { ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angu
 import { FormsModule, NgForm } from '@angular/forms';
 import { SkillsService } from '../../../core/services/skills-service';
 import { ISkillsAPI } from '../../../core/services/models/skills.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-editform',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './editform.html',
   styleUrl: './editform.css',
 })

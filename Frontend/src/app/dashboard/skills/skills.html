@@ -11,7 +11,16 @@
       <div class="form__row">
         <div class="form__group">
           <label class="form__label" for="skill-name-input">Skill name</label>
-          <input class="form__input" type="text" id="skill-name-input" ngModel name="name" />
+          <input
+            class="form__input"
+            type="text"
+            id="skill-name-input"
+            ngModel
+            name="name"
+            #name="ngModel"
+            required
+          />
+          <p class="msg" *ngIf="name.invalid && name.touched">Skill name is required</p>
         </div>
         <div class="form__group">
           <label class="form__label" for="skill-category-input">Category</label>
@@ -21,8 +30,11 @@
             id="skill-category-input"
             placeholder="e.g. Frontend"
             ngModel
+            #category="ngModel"
+            required
             name="category"
           />
+          <p class="msg" *ngIf="category.invalid && category.touched">Category is required</p>
         </div>
       </div>
       <div class="form__row">
@@ -34,8 +46,11 @@
             id="skill-level-input"
             placeholder="e.g. Advanced"
             ngModel
+            #level="ngModel"
+            required
             name="level"
           />
+          <p class="msg" *ngIf="level.invalid && level.touched">Level is required</p>
         </div>
         <div class="form__group">
           <label class="form__label" for="skill-percent-input">Level (0-100)</label>
@@ -46,8 +61,11 @@
             min="0"
             max="100"
             ngModel
+            required
+            #levelNum="ngModel"
             name="levelNum"
           />
+          <p class="msg" *ngIf="levelNum.invalid && levelNum.touched">levelNum is required</p>
         </div>
       </div>
       <div class="form__group">
