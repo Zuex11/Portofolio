@@ -1,38 +1,73 @@
 <main class="page-content">
-  <p class="path-label">~/<span>about</span></p>
+  <!-- Hero -->
+  <section class="hero" id="home" aria-labelledby="hero-name">
+    <div class="hero__content">
+      <span class="hero__kicker rise">Hello, I'm</span>
+      <h1 class="hero__name rise rise--2" id="hero-name">{{ about.name }}</h1>
+      <span class="hero__role rise rise--3">{{ about.title }}</span>
+      <div class="hero__actions rise rise--4">
+        <a class="btn btn--primary" routerLink="/about" fragment="projects">View my work</a>
+        <a class="btn btn--ghost" routerLink="/about" fragment="contact">Get in touch</a>
+      </div>
+    </div>
+    @if (about.photo) {
+      <div class="hero__media rise rise--3">
+        <img
+          class="hero__avatar"
+          [src]="'http://localhost:3000/files/' + about.photo"
+          alt="Profile photo of {{ about.name }}"
+        />
+      </div>
+    }
+  </section>
 
-  <section class="hero">
-    <img
-      class="hero__avatar"
-      [src]="'http://localhost:3000/files/' + about.photo"
-      alt="Profile photo"
-    />
-    <div>
-      <h1 class="hero__name">{{ about.name }}</h1>
-      <span class="hero__role">{{ about.title }}</span>
-      <p class="hero__bio">
-        {{ about.bio }}
-      </p>
+  <!-- About -->
+  <section class="section reveal" id="about" aria-labelledby="about-title">
+    <div class="section__head">
+      <span class="section__eyebrow">who i am</span>
+      <h2 class="section__title" id="about-title">About me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-facts">
+        <div class="about-fact">
+          <span class="about-fact__label">role</span>
+          <span class="about-fact__value">{{ about.title }}</span>
+        </div>
+        <div class="about-fact">
+          <span class="about-fact__label">email</span>
+          <span class="about-fact__value">{{ about.email }}</span>
+        </div>
+      </div>
+      <p class="about-text">{{ about.bio }}</p>
     </div>
   </section>
-  <section class="section" aria-labelledby="contact-title">
-    <span class="section__eyebrow">get in touch</span>
-    <h2 class="section__title" id="contact-title">Contact me</h2>
-    <p class="section__subtitle">
-      Have a question or want to work together? Send a message below, or reach out directly.
-    </p>
 
-    <div class="contact-grid">
-      <div class="contact-info">
-        <p class="form__label">Email</p>
-        <a class="contact-info__email" [href]="'mailto:' + about.email">{{ about.email }}</a>
-        <ul class="contact-info__list">
-          <li><a [href]="about.github">GitHub</a></li>
-          <li><a [href]="about.linkedIn">LinkedIn</a></li>
-        </ul>
-      </div>
-              <app-message></app-message>
+  <!-- Skills -->
+  <app-skills></app-skills>
 
+  <!-- Projects -->
+  <app-projects></app-projects>
+
+  <!-- Contact -->
+  <section class="section reveal" id="contact" aria-labelledby="contact-title">
+    <div class="section__head">
+      <span class="section__eyebrow">get in touch</span>
+      <h2 class="section__title" id="contact-title">Let's connect</h2>
+      <p class="section__subtitle">Find me on these platforms, or send an email directly.</p>
+    </div>
+    <div class="social-links">
+      <a class="social-link" [href]="about.github" target="_blank" rel="noopener">
+        <span><small>code</small>GitHub</span>
+        <span class="card__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="social-link" [href]="about.linkedIn" target="_blank" rel="noopener">
+        <span><small>network</small>LinkedIn</span>
+        <span class="card__arrow" aria-hidden="true">→</span>
+      </a>
+      <a class="social-link" [href]="'mailto:' + about.email">
+        <span><small>email</small>Say hello</span>
+        <span class="card__arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 </main>

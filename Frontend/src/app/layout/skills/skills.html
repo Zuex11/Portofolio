@@ -1,11 +1,11 @@
-<p class="path-label">~/<span>skills</span></p>
-
-<section class="section" aria-labelledby="skills-title">
-  <span class="section__eyebrow">what i work with</span>
-  <h1 class="section__title" id="skills-title">Skills</h1>
+<section class="section reveal" id="skills" aria-labelledby="skills-title">
+  <div class="section__head">
+    <span class="section__eyebrow">what i work with</span>
+    <h2 class="section__title" id="skills-title">Skills</h2>
+  </div>
   @for (category of categories; track category) {
-    <section class="skill-category">
-      <h2 class="skill-category__title"># {{ category }}</h2>
+    <div class="skill-category">
+      <h3 class="skill-category__title"># {{ category }}</h3>
       <div class="card-grid">
         @for (skill of groupedSkills[category]; track skill._id) {
           <article class="skill-item">
@@ -19,8 +19,6 @@
           </article>
         }
       </div>
-    </section>
+    </div>
   }
 </section>
-
-<div id="skills-container"></div>

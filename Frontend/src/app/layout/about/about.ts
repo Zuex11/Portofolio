@@ -1,13 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { AboutService } from '../../core/services/about-service';
 import { IAboutAPI } from '../../core/services/models/about.model';
-import { Message } from "./message/message";
+import { Skills } from '../skills/skills';
+import { Projects } from '../projects/projects';
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule, FormsModule, Message],
+  imports: [CommonModule, RouterLink, Skills, Projects],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })
